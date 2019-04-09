@@ -17,7 +17,7 @@ public class ConnectFourFrame extends JFrame {
     public ConnectFourFrame() {
         ConnectFourComponent connectFourComponent = new ConnectFourComponent();
 
-        setTitle("Touro Golf");
+        setTitle("Connect Four");
         setSize(1100,970);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,12 +35,16 @@ public class ConnectFourFrame extends JFrame {
 
         JButton row3 = new JButton("Drop");
         buttons.add(row3);
+
         JButton row4 = new JButton("Drop");
         buttons.add(row4);
+
         JButton row5 = new JButton("Drop");
         buttons.add(row5);
+
         JButton row6 = new JButton("Drop");
         buttons.add(row6);
+
         JButton row7 = new JButton("Drop");
         buttons.add(row7);
 
@@ -49,14 +53,12 @@ public class ConnectFourFrame extends JFrame {
         bottom.add(newGame);
 
 
-
-
-
         root.setLayout(new BorderLayout());
 
         root.add(connectFourComponent, BorderLayout.CENTER);
         root.add(buttons,BorderLayout.NORTH);
         root.add(bottom, BorderLayout.SOUTH);
+
         newGame.addActionListener(e->{
             connectFourComponent.newGame();
         });

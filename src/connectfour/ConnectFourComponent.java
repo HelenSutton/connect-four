@@ -24,13 +24,13 @@ public class ConnectFourComponent extends JComponent {
                     board[colomn][row] = turn;
                     peiceplaced = true;
                 } else {
-                    colomn--;
+                    colomn --;
                 }
             }
 
             if (peiceplaced ) {
                 checkwinner(colomn,row);
-                if(winner ==0) {
+                if(winner == 0) {
                     if (turn == 1) {
                         turn = 2;
                     } else {
@@ -51,34 +51,34 @@ public class ConnectFourComponent extends JComponent {
 
 
         //check down
-        for (int i= colomn+1; i <6; i++) {
+        for (int i = colomn + 1; i < 6; i ++) {
             if (board[i][row] == turn) {
-                peicesinarow++;
+                peicesinarow ++;
             } else {
                 break;
             }
         }
-        if (peicesinarow >=4){
+        if (peicesinarow >= 4){
             iswinner = true;
         }
 
         //check across
-        if (iswinner== false){
+        if (iswinner == false){
             peicesinarow = 1;
-            for(int i = row +1; i<7; i++){
-                if(board[colomn][i]==turn){
-                    peicesinarow++;
+            for(int i = row + 1; i < 7; i ++){
+                if(board[colomn][i] == turn){
+                    peicesinarow ++;
                 }
                 else{break;}
 
             }
-            for (int i = row-1; i>=0; i--){
-                if(board[colomn][i]==turn){
-                    peicesinarow++;
+            for (int i = row - 1; i >= 0; i --){
+                if(board[colomn][i] == turn){
+                    peicesinarow ++;
                 }
                 else{break;}
             }
-            if (peicesinarow >=4){
+            if (peicesinarow >= 4){
                 iswinner = true;
             }
         }
@@ -86,26 +86,26 @@ public class ConnectFourComponent extends JComponent {
 
 
 
-        //check 1st diagnol
+        //check 1st diagonal
         if (iswinner == false) {
             peicesinarow = 1;
-            int i = colomn +1;
-            int j = row +1;
-            while(i<6 && j<7){
-                if(board[i][j]==turn){
-                    peicesinarow++;
-                    i++;
-                    j++;
+            int i = colomn + 1;
+            int j = row + 1;
+            while(i < 6 && j < 7){
+                if(board[i][j] == turn){
+                    peicesinarow ++;
+                    i ++;
+                    j ++;
                 }
                 else{break;}
             }
-            i = colomn -1;
-            j = row -1;
-            while(i>=0 && j>=0){
-                if (board[i][j]== turn){
+            i = colomn - 1;
+            j = row - 1;
+            while(i >= 0 && j >= 0){
+                if (board[i][j] == turn){
                     peicesinarow ++;
-                    i--;
-                    j--;
+                    i --;
+                    j --;
                 }
                 else{break;}
             }
@@ -116,26 +116,26 @@ public class ConnectFourComponent extends JComponent {
         }
 
 
-
+        //check 2nd diagonal
         if (iswinner == false) {
             peicesinarow = 1;
             int i = colomn +1;
             int j = row -1;
-            while(i<6 && j>=0){
-                if(board[i][j]==turn){
-                    peicesinarow++;
-                    i++;
-                    j--;
+            while(i < 6 && j >= 0){
+                if(board[i][j] == turn){
+                    peicesinarow ++;
+                    i ++;
+                    j --;
                 }
                 else{break;}
             }
-            i = colomn -1;
-            j = row +1;
-            while(i>=0 && j<7){
-                if (board[i][j]== turn){
+            i = colomn - 1;
+            j = row + 1;
+            while(i >= 0 && j < 7){
+                if (board[i][j] == turn){
                     peicesinarow ++;
-                    i--;
-                    j++;
+                    i --;
+                    j ++;
                 }
                 else{break;}
             }
@@ -144,9 +144,6 @@ public class ConnectFourComponent extends JComponent {
             }
 
         }
-
-
-
 
         if (iswinner == true){
             winner = turn;
@@ -157,31 +154,29 @@ public class ConnectFourComponent extends JComponent {
 
 
     public void newGame(){
-        for (int i = 0; i<6;i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < 6; i ++) {
+            for (int j = 0; j < 7; j ++) {
                 board[i][j] = 0;
             }
         }
-
-
         winner = 0;
         turn = 1;
         repaint();
-
     }
+
     @Override
     protected void paintComponent(Graphics graphics){
 
 
 
-        int rowplacement =20;
-        int colomnplacement= 20;
-        int circlesize= 130;
+        int rowplacement = 20;
+        int colomnplacement = 20;
+        int circlesize = 130;
         int spacebetween = 5;
 
 
-        int height = colomnplacement + spacebetween*5 + circlesize*6;
-        int width = rowplacement +spacebetween*6 +circlesize*7;
+        int height = colomnplacement + spacebetween * 5 + circlesize * 6;
+        int width = rowplacement +spacebetween * 6 +circlesize * 7;
 
 
         graphics.setColor(Color.blue);
@@ -192,9 +187,9 @@ public class ConnectFourComponent extends JComponent {
 
         //board [5][2]= 1;
        // board [4][2]=2;
-        for (int i = 0; i<6;i++){
-            for (int j= 0; j<7;j++){
-                if (board[i][j]==0){
+        for (int i = 0; i < 6; i ++){
+            for (int j= 0; j < 7; j ++){
+                if (board[i][j] == 0){
                     graphics.setColor(Color.white);
                 }
                 else if (board[i][j] == 1){
@@ -204,11 +199,11 @@ public class ConnectFourComponent extends JComponent {
                     graphics.setColor(Color.yellow);
                 }
                 graphics.fillOval(colomnplacement,rowplacement,circlesize,circlesize);
-                colomnplacement = colomnplacement+circlesize+spacebetween;
+                colomnplacement = colomnplacement + circlesize + spacebetween;
 
             }
             colomnplacement = 20;
-            rowplacement = rowplacement +circlesize + spacebetween;
+            rowplacement = rowplacement + circlesize + spacebetween;
         }
 
 
